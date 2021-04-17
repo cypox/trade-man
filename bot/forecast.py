@@ -24,12 +24,11 @@ class predictor:
     x = Dense(num_outputs, activation="linear")(x)
     self.model = Model(inputs=model_input, outputs=x)
   
-  def train_model(self, dataset, epochs=10):
+  def train_model(self, dataset, epochs=10, with_callbacks=False):
     optimizer = Adam(lr=1e-3, decay=1e-3 / 200)
     self.model.compile(optimizer=optimizer , loss='mean_squared_error')
     log_dir = "logs/fit/" + datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
-    tensorboard_callback = tf.keras.callbacks.TensorBoard(log_dir=log_dir, histogram_freq=1)
-    tensorboard_callback = []
+    tensorboard_callback = tf.keras.callbacks.TensorBoard(log_dir=log_dir, histogram_freq=1) if with_callbacks else []
     self.model.fit(dataset.train, validation_data=dataset.valid, epochs=epochs, callbacks=[tensorboard_callback])
   
   def predict_single(self, input_sequence):
