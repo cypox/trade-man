@@ -35,7 +35,7 @@ class predictor:
     return self.model.predict([input_sequence])[0]
 
   def predict(self, input_sequences):
-    return self.model.predict(input_sequence)
+    return self.model.predict(input_sequences)
   
   def save_model(self, path):
     self.model.save(path)
