@@ -1,9 +1,9 @@
 import datetime
-import keras
 import tensorflow as tf
-from keras.optimizers import Adam
-from keras.models import Sequential, Model
-from keras.layers import Dense, LSTM, Input, Conv1D, concatenate, Flatten, BatchNormalization
+from tensorflow import keras
+from tensorflow.keras.optimizers import Adam
+from tensorflow.keras.models import Sequential, Model
+from tensorflow.keras.layers import Dense, LSTM, Input, Conv1D, concatenate, Flatten, BatchNormalization
 
 class predictor:
   def __init__(self):

@@ -1,6 +1,6 @@
 from datasource import datafeed
 from dataset import dataset
-from predictor.lstm_forecast import predictorn
+from predictor.lstm_forecast import predictor
 from plot_utils import show_plot
 
 import random
