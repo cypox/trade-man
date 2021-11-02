@@ -5,7 +5,7 @@ from plot_utils import show_plot
 
 import random
 
-load_saved = False
+load_saved = True
 p = predictor()
 if load_saved:
   p.load_model('trained.h5')
@@ -18,9 +18,9 @@ else:
   p.train_model(d)
   p.save_model('trained.h5')
 
-input_seq = [random.random() * 5 + 30 for i in range(30)]
-expected_seq = random.random() * 5 + 30
-output_seq = p.predict_single(input_seq)
+f = datafeed()
+f.update_ticker('AAPL')
+d = dataset()
+d.build_dataset(f.get_dataframe())
 
-plt = show_plot([input_seq, expected_seq, output_seq], 0, 'Sample Example')
-plt.savefig('prediction_output.png')
+output_seq = p.predict(d.valid)
