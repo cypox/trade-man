@@ -24,7 +24,7 @@ class predictor:
     x = Dense(num_outputs, activation="linear")(x)
     self.model = Model(inputs=model_input, outputs=x)
   
-  def train_model(self, dataset, epochs=10, with_callbacks=False):
+  def train_model(self, dataset, epochs=50, with_callbacks=False):
     optimizer = Adam(lr=1e-3, decay=1e-3 / 200)
     self.model.compile(optimizer=optimizer , loss='mean_squared_error')
     log_dir = "logs/fit/" + datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
